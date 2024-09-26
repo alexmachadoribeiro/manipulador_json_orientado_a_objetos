@@ -9,7 +9,6 @@ if __name__ == "__main__":
     m = Manipulador()
 
     while True:
-        campos = ('nome', 'cpf', 'email', 'profissao')
         # menu
         print("1 - Criar novo arquivo JSON.")
         print("2 - Abrir e ler arquivo JSON.")
@@ -64,10 +63,13 @@ if __name__ == "__main__":
                     print(f"Arquivo aberto: {abrir_arquivo}.json.\n")
                     codigo = int(input("Informe o código do usuário que deseja alterar os dados: "))
                     for campo in usuarios[codigo]:
-                        print(f"Valor atual do campo {campo}: {usuarios[codigo].get(campo)}")
-                        novo_dado = input(f"Informe o novo dado do campo {campo} ou aperte 'Enter' caso deseje manter o mesmo valor: ")
-                        if novo_dado:
-                            usuarios[codigo][campo] = novo_dado
+                        if campo != "codigo":
+                            print(f"Valor atual do campo {campo}: {usuarios[codigo].get(campo)}")
+                            novo_dado = input(f"Informe o novo dado do campo {campo} ou aperte 'Enter' caso deseje manter o mesmo valor: ")
+                            if novo_dado:
+                                usuarios[codigo][campo] = novo_dado
+                            else:
+                                ...
                         else:
                             ...
                     print(m.salvar_dados(usuarios, abrir_arquivo))
